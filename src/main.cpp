@@ -28,6 +28,7 @@ int main(int argc, char** argv) {
     std::shared_ptr<FileBuffer> pFile;
     bool stop = false;
     
+    // Printer thread. This loop prints the contents of the file
     auto printer = std::thread([&](){
         while (!stop) {
             if (pFile == nullptr) {
@@ -50,7 +51,7 @@ int main(int argc, char** argv) {
     ::printf("Press q to quit\n");
     
     try {
-        system("stty raw");
+        system("stty raw"); // So we don't need to press enter after every keystroke
         while (!stop) {
             switch (getchar()) {
                 case '1': {
@@ -58,7 +59,7 @@ int main(int argc, char** argv) {
                     ::fprintf(::stderr, "\nLoading 1.raw\n");
                     {
                         Timer t("Loading");
-                        pFile = pFile.make_shared("1.raw");
+                        pFile = pFile.make_shared("1.raw"); // removes the old file
                     }
                     ::fprintf(::stderr, "Loaded %.2f GB\n", pFile->size() / float(gigabyte));
                     break;
@@ -69,7 +70,7 @@ int main(int argc, char** argv) {
                     ::fprintf(::stderr, "\nLoading 2.raw\n");
                     {
                         Timer t("Loading");
-                        pFile = pFile.make_shared("2.raw");
+                        pFile = pFile.make_shared("2.raw"); // removes the old file
                     }
                     ::fprintf(::stderr, "Loaded %.2f GB\n", pFile->size() / float(gigabyte));
                     break;
@@ -80,7 +81,7 @@ int main(int argc, char** argv) {
                     ::fprintf(::stderr, "\nLoading 3.raw\n");
                     {
                         Timer t("Loading");
-                        pFile = pFile.make_shared("3.raw");
+                        pFile = pFile.make_shared("3.raw"); // removes the old file
                     }
                     ::fprintf(::stderr, "Loaded %.2f GB\n", pFile->size() / float(gigabyte));
                     break;
@@ -115,6 +116,6 @@ int main(int argc, char** argv) {
     }
     
     ::fprintf(::stderr, "\nQuitting...\n");
-    printer.join();
+    printer.join(); // make sure that the printer thread properly quit
     return 0;
 }

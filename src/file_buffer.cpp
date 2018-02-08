@@ -22,6 +22,7 @@ FileBuffer::FileBuffer(const std::string& aFileName) {
     mSize = stats.st_size;
     
     mpData = (uint8_t*)::mmap(NULL, mSize, PROT_READ, MAP_PRIVATE|MAP_FILE, mFileHandle, 0);
+    
     if (mpData == MAP_FAILED) {
         close(mFileHandle);
         ::snprintf(buffer, sizeof(buffer), "Error mapping file %s: %s", aFileName.c_str(), strerror(errno));
