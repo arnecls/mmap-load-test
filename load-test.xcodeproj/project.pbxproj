@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0995DDD1202B8A2D00A7A1E5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0995DDD0202B8A2D00A7A1E5 /* main.cpp */; };
+		0995DDDD202B8D3600A7A1E5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0995DDDB202B8D3500A7A1E5 /* main.cpp */; };
+		0995DDDE202B8D3600A7A1E5 /* file_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0995DDDC202B8D3600A7A1E5 /* file_buffer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,8 +24,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		09950E97202BA43100ADE23B /* timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = timer.h; sourceTree = "<group>"; };
+		09950E98202BA59C00ADE23B /* timer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = timer.hpp; sourceTree = "<group>"; };
+		09950E99202BACDA00ADE23B /* create_data.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = create_data.sh; sourceTree = "<group>"; };
 		0995DDCD202B8A2D00A7A1E5 /* load-test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "load-test"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0995DDD0202B8A2D00A7A1E5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0995DDDB202B8D3500A7A1E5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		0995DDDC202B8D3600A7A1E5 /* file_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_buffer.cpp; sourceTree = "<group>"; };
+		0995DDE0202B8D6B00A7A1E5 /* file_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_buffer.h; sourceTree = "<group>"; };
+		0995DDE1202B8F9500A7A1E5 /* file_exception.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = file_exception.h; sourceTree = "<group>"; };
+		0995DDE2202B903C00A7A1E5 /* file_exception.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = file_exception.hpp; sourceTree = "<group>"; };
+		0995DDE3202B907B00A7A1E5 /* file_buffer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = file_buffer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +50,9 @@
 		0995DDC4202B8A2D00A7A1E5 = {
 			isa = PBXGroup;
 			children = (
-				0995DDCF202B8A2D00A7A1E5 /* load-test */,
+				09950E99202BACDA00ADE23B /* create_data.sh */,
+				0995DDDF202B8D3E00A7A1E5 /* include */,
+				0995DDDA202B8D0500A7A1E5 /* src */,
 				0995DDCE202B8A2D00A7A1E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +65,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0995DDCF202B8A2D00A7A1E5 /* load-test */ = {
+		0995DDDA202B8D0500A7A1E5 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				0995DDD0202B8A2D00A7A1E5 /* main.cpp */,
+				0995DDDC202B8D3600A7A1E5 /* file_buffer.cpp */,
+				0995DDDB202B8D3500A7A1E5 /* main.cpp */,
 			);
-			path = "load-test";
+			path = src;
+			sourceTree = "<group>";
+		};
+		0995DDDF202B8D3E00A7A1E5 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0995DDE0202B8D6B00A7A1E5 /* file_buffer.h */,
+				0995DDE3202B907B00A7A1E5 /* file_buffer.hpp */,
+				0995DDE1202B8F9500A7A1E5 /* file_exception.h */,
+				0995DDE2202B903C00A7A1E5 /* file_exception.hpp */,
+				09950E97202BA43100ADE23B /* timer.h */,
+				09950E98202BA59C00ADE23B /* timer.hpp */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +144,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0995DDD1202B8A2D00A7A1E5 /* main.cpp in Sources */,
+				0995DDDD202B8D3600A7A1E5 /* main.cpp in Sources */,
+				0995DDDE202B8D3600A7A1E5 /* file_buffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +259,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/include";
+				OBJROOT = "${PROJECT_DIR}/build";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "${PROJECT_DIR}/bin";
 			};
 			name = Debug;
 		};
@@ -241,7 +270,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/include";
+				OBJROOT = "${PROJECT_DIR}/build";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "${PROJECT_DIR}/bin";
 			};
 			name = Release;
 		};
